@@ -3,10 +3,10 @@
   "name": "solanapdas",
   "instructions": [
     {
-      "name": "create",
+      "name": "createPet",
       "accounts": [
         {
-          "name": "bank",
+          "name": "pet",
           "isMut": true,
           "isSigner": false
         },
@@ -29,10 +29,10 @@
       ]
     },
     {
-      "name": "deposit",
+      "name": "feedPet",
       "accounts": [
         {
-          "name": "bank",
+          "name": "pet",
           "isMut": true,
           "isSigner": false
         },
@@ -55,30 +55,25 @@
       ]
     },
     {
-      "name": "withdraw",
+      "name": "checkForUnfed",
       "accounts": [
         {
-          "name": "bank",
+          "name": "pet",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "user",
-          "isMut": true,
-          "isSigner": true
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
         }
       ],
-      "args": [
-        {
-          "name": "amount",
-          "type": "u64"
-        }
-      ]
+      "args": []
     }
   ],
   "accounts": [
     {
-      "name": "Bank",
+      "name": "Pet",
       "type": {
         "kind": "struct",
         "fields": [
@@ -87,18 +82,38 @@
             "type": "string"
           },
           {
+            "name": "happiness",
+            "type": "u32"
+          },
+          {
             "name": "balance",
             "type": "u64"
           },
           {
             "name": "owner",
             "type": "publicKey"
+          },
+          {
+            "name": "lastFedTimestamp",
+            "type": "i64"
+          },
+          {
+            "name": "lastHappinessDecreaseTimestamp",
+            "type": "i64"
+          },
+          {
+            "name": "bornDate",
+            "type": "i64"
+          },
+          {
+            "name": "hasBeenFed",
+            "type": "bool"
           }
         ]
       }
     }
   ],
   "metadata": {
-    "address": "9uqqGKCD1aiwv37sQfmadVRzX9BraSg36afBsvhv9hmp"
+    "address": "58q3u8kreouaKsVSwKxPqTP8eSu5pz6xXfHkAkPbdMP5"
   }
 }

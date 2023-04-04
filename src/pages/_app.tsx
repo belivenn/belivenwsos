@@ -13,7 +13,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
     return (
         <>
           <Head>
-            <title>Solana Scaffold Lite</title>
+            <title>WSoS 2023 - beliven.SOL</title>
           </Head>
 
           <ContextProvider>
