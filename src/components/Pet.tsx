@@ -166,7 +166,7 @@ export const Pet: FC = () => {
         <>      {pets.map((pet) => {
 
             return (
-                <div className="md:hero-content flex flex-col">
+                <div key={pet.pubkey} className="md:hero-content flex flex-col">
                     <Image src={cuteDogImage} alt="cute dog" width={200} height={200} />
 
 
