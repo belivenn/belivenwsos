@@ -9,7 +9,7 @@ import { Program, AnchorProvider, web3, utils, BN } from "@project-serum/anchor"
 import idl from "./solanapdas.json";
 import { PublicKey, SystemProgram, SYSVAR_CLOCK_PUBKEY } from '@solana/web3.js';
 import Image from 'next/image';
-import cuteDogImage from '/home/beliv/lesson/FinalTaskFrontEnd/dapp-scaffold/src/components/image/lindo-retrato-de-cachorro.jpg';
+import cuteDogImage from './image/lindo-retrato-de-cachorro.jpg';
 
 const idl_string = JSON.stringify(idl)
 const idl_object = JSON.parse(idl_string)
