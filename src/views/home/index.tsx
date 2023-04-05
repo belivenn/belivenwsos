@@ -66,6 +66,9 @@ This DAPP allows users to create and take care of virtual pets as program-derive
             <p>
             BornDate
             </p>
+            <p>
+            URL
+            </p>
 
           </h4>
           
