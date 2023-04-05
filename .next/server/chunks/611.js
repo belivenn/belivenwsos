@@ -72,7 +72,13 @@ const Pet = () => {
         throw new Error('The pet name must be no longer than 20 characters');
       }
 
-      await program.rpc.createPet(petname, {
+      let cid = prompt("Enter a URL (optional).: \n Leave it blank to use the default image. \n Alternatively, you can use the following link to get a cute WSoS Pet: https://bafybeibo4xo2sgadfrslrvfod2h4gh5bjkacriz7gampu4ycy2rxdf4k5q.ipfs.nftstorage.link/dog.jpg");
+
+      if (cid === "") {
+        cid = "0";
+      }
+
+      await program.rpc.createPet(petname, cid, {
         accounts: {
           pet,
           user: anchProvider.wallet.publicKey,
@@ -162,7 +168,12 @@ const Pet = () => {
     children: ["      ", pets.map(pet => {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "md:hero-content flex flex-col",
-        children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx((next_image__WEBPACK_IMPORTED_MODULE_5___default()), {
+        children: [pet.cid !== "0" && pet.cid !== "" && (pet.cid.endsWith(".jpeg") || pet.cid.endsWith(".png") || pet.cid.endsWith(".gif")) ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx("img", {
+          src: `${pet.cid}`,
+          alt: "pet image",
+          width: 200,
+          height: 200
+        }) : /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx((next_image__WEBPACK_IMPORTED_MODULE_5___default()), {
           src: _image_lindo_retrato_de_cachorro_jpg__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z,
           alt: "cute dog",
           width: 200,
@@ -551,14 +562,14 @@ __webpack_async_result__();
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/_next/static/media/lindo-retrato-de-cachorro.7a758f55.jpg","height":4298,"width":7800,"blurDataURL":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/sBCgoKCgoKCwwMCw8QDhAPFhQTExQWIhgaGBoYIjMgJSAgJSAzLTcsKSw3LVFAODhAUV5PSk9ecWVlcY+Ij7u7+//CABEIAAQACAMBIgACEQEDEQH/xAAoAAEBAAAAAAAAAAAAAAAAAAAAAwEBAQAAAAAAAAAAAAAAAAAABAX/2gAMAwEAAhADEAAAALB83//EABwQAAICAgMAAAAAAAAAAAAAAAECAwQABREiYf/aAAgBAQABPwDRzyXW28kx5IuOo8C9c//EABkRAAEFAAAAAAAAAAAAAAAAAAABAzKBsf/aAAgBAgEBPwBuNrp//8QAGREAAQUAAAAAAAAAAAAAAAAAAQACMnGx/9oACAEDAQE/AHzNDF//2Q==","blurWidth":8,"blurHeight":4});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/_next/static/media/lindo-retrato-de-cachorro.76cf2b23.jpg","height":4298,"width":7800,"blurDataURL":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/sBCgoKCgoKCwwMCw8QDhAPFhQTExQWIhgaGBoYIjMgJSAgJSAzLTcsKSw3LVFAODhAUV5PSk9ecWVlcY+Ij7u7+//CABEIAAQACAMBIgACEQEDEQH/xAAoAAEBAAAAAAAAAAAAAAAAAAAAAwEBAQAAAAAAAAAAAAAAAAAABAX/2gAMAwEAAhADEAAAALB83//EABwQAAICAgMAAAAAAAAAAAAAAAECAwQABREiYf/aAAgBAQABPwDRzyXW28kx5IuOo8C9c//EABkRAAEFAAAAAAAAAAAAAAAAAAABAzKBsf/aAAgBAgEBPwBuNrp//8QAGREAAQUAAAAAAAAAAAAAAAAAAQADMnGx/9oACAEDAQE/AHJmhi//2Q==","blurWidth":8,"blurHeight":4});
 
 /***/ }),
 
 /***/ 6628:
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"version":"0.1.0","name":"solanapdas","instructions":[{"name":"createPet","accounts":[{"name":"pet","isMut":true,"isSigner":false},{"name":"user","isMut":true,"isSigner":true},{"name":"systemProgram","isMut":false,"isSigner":false}],"args":[{"name":"name","type":"string"}]},{"name":"feedPet","accounts":[{"name":"pet","isMut":true,"isSigner":false},{"name":"user","isMut":true,"isSigner":true},{"name":"systemProgram","isMut":false,"isSigner":false}],"args":[{"name":"amount","type":"u64"}]},{"name":"checkForUnfed","accounts":[{"name":"pet","isMut":true,"isSigner":false},{"name":"clock","isMut":false,"isSigner":false}],"args":[]}],"accounts":[{"name":"Pet","type":{"kind":"struct","fields":[{"name":"name","type":"string"},{"name":"happiness","type":"u32"},{"name":"balance","type":"u64"},{"name":"owner","type":"publicKey"},{"name":"lastFedTimestamp","type":"i64"},{"name":"lastHappinessDecreaseTimestamp","type":"i64"},{"name":"bornDate","type":"i64"},{"name":"hasBeenFed","type":"bool"}]}}],"metadata":{"address":"58q3u8kreouaKsVSwKxPqTP8eSu5pz6xXfHkAkPbdMP5"}}');
+module.exports = JSON.parse('{"version":"0.1.0","name":"solanapdas","instructions":[{"name":"createPet","accounts":[{"name":"pet","isMut":true,"isSigner":false},{"name":"user","isMut":true,"isSigner":true},{"name":"systemProgram","isMut":false,"isSigner":false}],"args":[{"name":"name","type":"string"},{"name":"cid","type":"string"}]},{"name":"feedPet","accounts":[{"name":"pet","isMut":true,"isSigner":false},{"name":"user","isMut":true,"isSigner":true},{"name":"systemProgram","isMut":false,"isSigner":false}],"args":[{"name":"amount","type":"u64"}]},{"name":"checkForUnfed","accounts":[{"name":"pet","isMut":true,"isSigner":false},{"name":"clock","isMut":false,"isSigner":false}],"args":[]}],"accounts":[{"name":"Pet","type":{"kind":"struct","fields":[{"name":"name","type":"string"},{"name":"happiness","type":"u32"},{"name":"balance","type":"u64"},{"name":"owner","type":"publicKey"},{"name":"lastFedTimestamp","type":"i64"},{"name":"lastHappinessDecreaseTimestamp","type":"i64"},{"name":"bornDate","type":"i64"},{"name":"hasBeenFed","type":"bool"},{"name":"cid","type":"string"}]}}],"metadata":{"address":"58q3u8kreouaKsVSwKxPqTP8eSu5pz6xXfHkAkPbdMP5"}}');
 
 /***/ })
 

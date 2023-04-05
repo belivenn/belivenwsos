@@ -44,7 +44,7 @@ This DAPP allows users to create and take care of virtual pets as program-derive
 
           <h4 className="md:w-full text-2x1 md:text-2xl text-center text-slate-300 my-2">
             <p>
-            The user can create a pet by providing a name argument that is no longer than 20 characters in length, and the pet will be initialized with the following parameters.  </p> </h4>
+            The user can create a pet by providing a name argument that is no longer than 20 characters in length and a imageURL (.JPEG .PNG .GIF) and the pet will be initialized with the following parameters.  </p> </h4>
             <p className='text-slate-500 text-2x1 leading-relaxed'></p>
             <h4 className="md:w-full text-2x1 md:text-2xl text-center text-slate-300 my-2">
             Name

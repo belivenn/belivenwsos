@@ -25,6 +25,10 @@
         {
           "name": "name",
           "type": "string"
+        },
+        {
+          "name": "cid",
+          "type": "string"
         }
       ]
     },
@@ -108,6 +112,10 @@
           {
             "name": "hasBeenFed",
             "type": "bool"
+          },
+          {
+            "name": "cid",
+            "type": "string"
           }
         ]
       }

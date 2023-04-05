@@ -29,14 +29,12 @@ export const Pet: FC = () => {
     }
 
 
+    
     const petCreate = async () => { 
 
         try {
             const anchProvider = getProvider()
             const program = new Program(idl_object, programID, anchProvider)
-
-           
-
 
             //bump is added automatically 
             const [pet] = await PublicKey.findProgramAddressSync([
@@ -50,7 +48,15 @@ export const Pet: FC = () => {
                 throw new Error('The pet name must be no longer than 20 characters');
               }
 
-            await program.rpc.createPet(petname, {
+             
+              let cid = prompt("Enter a URL (optional).: \n Leave it blank to use the default image. \n Alternatively, you can use the following link to get a cute WSoS Pet: https://bafybeibo4xo2sgadfrslrvfod2h4gh5bjkacriz7gampu4ycy2rxdf4k5q.ipfs.nftstorage.link/dog.jpg");
+              if (cid === "") {
+                  cid = "0";
+              }
+
+
+
+            await program.rpc.createPet(petname, cid, {
                 accounts: {
                     pet,
                     user: anchProvider.wallet.publicKey,
@@ -167,10 +173,13 @@ export const Pet: FC = () => {
 
             return (
                 <div key={pet.pubkey} className="md:hero-content flex flex-col">
-                    <Image src={cuteDogImage} alt="cute dog" width={200} height={200} />
-
-
-
+                    
+                    {pet.cid !== "0" && pet.cid !== "" && (pet.cid.endsWith(".jpeg") || pet.cid.endsWith(".png") || pet.cid.endsWith(".gif"))  ? 
+                   
+                   <img src={`${pet.cid}`} alt="pet image" width={200} height={200} /> :
+                   <Image src={cuteDogImage} alt="cute dog" width={200} height={200} />
+                   } 
+                     
                     <h1> {pet.name.toString()} </h1>
                     <span>Balance: {pet.balance / 1000000000}◎</span>
                     <span>Happiness: {pet.happiness.toString()}</span>
